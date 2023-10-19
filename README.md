@@ -1,7 +1,7 @@
 # Objetivo
 Esta documentação tem como objetivo apresentar a arquitetura do serviço **"Desafio AirBnB"**, de forma clara e objetiva, a fim de simplificar a compreensão de todos os seus componentes e funcionamento. O projeto visa detalhar todas as etapas de um projeto de BI, vamos passar pelas planilhas, ETL, Bancos Relacionais e o Power BI para análises performáticas.
 
-Esse desafio foi proposto por Heitor Sasaki o pessoal da DataGlowUp e da CubosAcademy!
+Esse desafio foi proposto por Heitor Sasaki em conjunto com o pessoal da DataGlowUp e da CubosAcademy!
 
 
 Em cada pasta você vai encontrar:
