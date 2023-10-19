@@ -1,0 +1,1735 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2023 1:28:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CYLOGUS"
+  DTS:CreatorName="CYLOGUS\loren"
+  DTS:DTSID="{86555ABE-A3C3-4991-8C56-7A264FBD26E1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="load_sheets"
+  DTS:PackageType="5"
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{C3C49E73-1158-492F-AFB6-192FE849554A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[listings]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{61B33CBB-0373-49CA-8B96-26D4CB5F35DC}"
+      DTS:ObjectName="listings">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\0 - Personal\portfolio\projects\14\Fontes\AirBnB-Data\Listings.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[reviews]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{143A47D4-4EF3-4B8A-81F0-4D4205179403}"
+      DTS:ObjectName="reviews">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\0 - Personal\portfolio\projects\14\Fontes\AirBnB-Data\Reviews.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Listings"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{475995A4-F70A-4620-A09B-F358FDA65985}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Listings"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Listings\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Listings$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Listings\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[listings]"
+                  connectionManagerRefId="Package.ConnectionManagers[listings]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[listing_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[listing_id]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[listing_id]"
+                      name="listing_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_id]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_id]"
+                      name="host_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_since]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_since]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_since]"
+                      name="host_since"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_location]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_location]"
+                      name="host_location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_response_time]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_time]"
+                      name="host_response_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_rate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_response_rate]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_rate]"
+                      name="host_response_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_acceptance_rate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_acceptance_rate]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_acceptance_rate]"
+                      name="host_acceptance_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_is_superhost]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_is_superhost]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_is_superhost]"
+                      name="host_is_superhost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_total_listings_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_total_listings_count]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_total_listings_count]"
+                      name="host_total_listings_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_has_profile_pic]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_has_profile_pic]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_has_profile_pic]"
+                      name="host_has_profile_pic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_identity_verified]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_identity_verified]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_identity_verified]"
+                      name="host_identity_verified"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[neighbourhood]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[neighbourhood]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[neighbourhood]"
+                      name="neighbourhood"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[district]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[district]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[district]"
+                      name="district"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[city]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[property_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[property_type]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[property_type]"
+                      name="property_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[room_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[room_type]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[room_type]"
+                      name="room_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[accommodates]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[accommodates]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[accommodates]"
+                      name="accommodates"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[bedrooms]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[bedrooms]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[bedrooms]"
+                      name="bedrooms"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[amenities]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[amenities]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[amenities]"
+                      name="amenities"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[price]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[price]"
+                      name="price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[minimum_nights]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[minimum_nights]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[minimum_nights]"
+                      name="minimum_nights"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[maximum_nights]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[maximum_nights]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[maximum_nights]"
+                      name="maximum_nights"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_rating]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_rating]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_rating]"
+                      name="review_scores_rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_accuracy]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_accuracy]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_accuracy]"
+                      name="review_scores_accuracy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_cleanliness]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_cleanliness]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_cleanliness]"
+                      name="review_scores_cleanliness"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_checkin]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_checkin]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_checkin]"
+                      name="review_scores_checkin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_communication]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_communication]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_communication]"
+                      name="review_scores_communication"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_location]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_location]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_location]"
+                      name="review_scores_location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_value]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_value]"
+                      name="review_scores_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[instant_bookable]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[instant_bookable]"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[instant_bookable]"
+                      name="instant_bookable"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[listing_id]"
+                      dataType="r8"
+                      name="listing_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_id]"
+                      dataType="r8"
+                      name="host_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_since]"
+                      dataType="date"
+                      name="host_since" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_location]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_response_time]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_response_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_response_rate]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_response_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_acceptance_rate]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_acceptance_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_is_superhost]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_is_superhost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_total_listings_count]"
+                      dataType="r8"
+                      name="host_total_listings_count" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_has_profile_pic]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_has_profile_pic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[host_identity_verified]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_identity_verified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[neighbourhood]"
+                      dataType="wstr"
+                      length="255"
+                      name="neighbourhood" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[district]"
+                      dataType="wstr"
+                      length="255"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[property_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="property_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[room_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[accommodates]"
+                      dataType="r8"
+                      name="accommodates" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[bedrooms]"
+                      dataType="r8"
+                      name="bedrooms" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[amenities]"
+                      dataType="wstr"
+                      length="255"
+                      name="amenities" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[price]"
+                      dataType="r8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[minimum_nights]"
+                      dataType="r8"
+                      name="minimum_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[maximum_nights]"
+                      dataType="r8"
+                      name="maximum_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_rating]"
+                      dataType="r8"
+                      name="review_scores_rating" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_accuracy]"
+                      dataType="r8"
+                      name="review_scores_accuracy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_cleanliness]"
+                      dataType="r8"
+                      name="review_scores_cleanliness" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_checkin]"
+                      dataType="r8"
+                      name="review_scores_checkin" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_communication]"
+                      dataType="r8"
+                      name="review_scores_communication" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_location]"
+                      dataType="r8"
+                      name="review_scores_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_scores_value]"
+                      dataType="r8"
+                      name="review_scores_value" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].ExternalColumns[instant_bookable]"
+                      dataType="wstr"
+                      length="255"
+                      name="instant_bookable" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[listing_id]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[listing_id]"
+                      name="listing_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_id]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_id]"
+                      name="host_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_since]"
+                      dataType="date"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_since]"
+                      name="host_since" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_location]"
+                      name="host_location" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_response_time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_response_time]"
+                      name="host_response_time" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_response_rate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_response_rate]"
+                      name="host_response_rate" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_acceptance_rate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_acceptance_rate]"
+                      name="host_acceptance_rate" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_is_superhost]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_is_superhost]"
+                      name="host_is_superhost" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_total_listings_count]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_total_listings_count]"
+                      name="host_total_listings_count" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_has_profile_pic]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_has_profile_pic]"
+                      name="host_has_profile_pic" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_identity_verified]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[host_identity_verified]"
+                      name="host_identity_verified" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[neighbourhood]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[neighbourhood]"
+                      name="neighbourhood" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[district]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[district]"
+                      name="district" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[property_type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[property_type]"
+                      name="property_type" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[room_type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[room_type]"
+                      name="room_type" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[accommodates]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[accommodates]"
+                      name="accommodates" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[bedrooms]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[bedrooms]"
+                      name="bedrooms" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[amenities]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[amenities]"
+                      name="amenities" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[price]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[minimum_nights]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[minimum_nights]"
+                      name="minimum_nights" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[maximum_nights]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[maximum_nights]"
+                      name="maximum_nights" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_rating]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_rating]"
+                      name="review_scores_rating" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_accuracy]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_accuracy]"
+                      name="review_scores_accuracy" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_cleanliness]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_cleanliness]"
+                      name="review_scores_cleanliness" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_checkin]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_checkin]"
+                      name="review_scores_checkin" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_communication]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_communication]"
+                      name="review_scores_communication" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_location]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_location]"
+                      name="review_scores_location" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_value]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[review_scores_value]"
+                      name="review_scores_value" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[instant_bookable]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[instant_bookable]"
+                      name="instant_bookable" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Listings\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[listings]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Listings\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{085FC991-972D-4659-B5FF-B52A606E31AE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AirBnB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[listing_id]"
+                      cachedDataType="r8"
+                      cachedName="listing_id"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[listing_id]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[listing_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_id]"
+                      cachedDataType="r8"
+                      cachedName="host_id"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_id]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_since]"
+                      cachedDataType="date"
+                      cachedName="host_since"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_since]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_since]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_location"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_location]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_location]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_response_time]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_response_time"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_response_time]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_time]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_response_rate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_response_rate"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_response_rate]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_response_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_acceptance_rate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_acceptance_rate"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_acceptance_rate]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_acceptance_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_is_superhost]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_is_superhost"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_is_superhost]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_is_superhost]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_total_listings_count]"
+                      cachedDataType="r8"
+                      cachedName="host_total_listings_count"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_total_listings_count]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_total_listings_count]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_has_profile_pic]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_has_profile_pic"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_has_profile_pic]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_has_profile_pic]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[host_identity_verified]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="host_identity_verified"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_identity_verified]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[host_identity_verified]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[neighbourhood]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="neighbourhood"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[neighbourhood]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[neighbourhood]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[district]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="district"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[district]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[district]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[property_type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="property_type"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[property_type]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[property_type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[room_type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="room_type"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_type]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[room_type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[accommodates]"
+                      cachedDataType="r8"
+                      cachedName="accommodates"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accommodates]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[accommodates]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bedrooms]"
+                      cachedDataType="r8"
+                      cachedName="bedrooms"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bedrooms]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[bedrooms]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[amenities]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="amenities"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[amenities]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[amenities]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="r8"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[price]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minimum_nights]"
+                      cachedDataType="r8"
+                      cachedName="minimum_nights"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minimum_nights]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[minimum_nights]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maximum_nights]"
+                      cachedDataType="r8"
+                      cachedName="maximum_nights"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maximum_nights]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[maximum_nights]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_rating]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_rating"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_rating]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_rating]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_accuracy]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_accuracy"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_accuracy]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_accuracy]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_cleanliness]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_cleanliness"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_cleanliness]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_cleanliness]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_checkin]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_checkin"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_checkin]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_checkin]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_communication]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_communication"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_communication]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_communication]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_location]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_location"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_location]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_location]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_scores_value]"
+                      cachedDataType="r8"
+                      cachedName="review_scores_value"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_value]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[review_scores_value]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[instant_bookable]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="instant_bookable"
+                      externalMetadataColumnId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[instant_bookable]"
+                      lineageId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output].Columns[instant_bookable]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[listing_id]"
+                      dataType="i4"
+                      name="listing_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_id]"
+                      dataType="i4"
+                      name="host_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_since]"
+                      dataType="dbDate"
+                      name="host_since" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_location]"
+                      dataType="wstr"
+                      length="255"
+                      name="host_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_response_time]"
+                      dataType="wstr"
+                      length="50"
+                      name="host_response_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_response_rate]"
+                      dataType="i4"
+                      name="host_response_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_acceptance_rate]"
+                      dataType="i4"
+                      name="host_acceptance_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_is_superhost]"
+                      dataType="wstr"
+                      length="1"
+                      name="host_is_superhost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_total_listings_count]"
+                      dataType="i4"
+                      name="host_total_listings_count" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_has_profile_pic]"
+                      dataType="wstr"
+                      length="1"
+                      name="host_has_profile_pic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[host_identity_verified]"
+                      dataType="wstr"
+                      length="1"
+                      name="host_identity_verified" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[neighbourhood]"
+                      dataType="wstr"
+                      length="255"
+                      name="neighbourhood" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[district]"
+                      dataType="wstr"
+                      length="255"
+                      name="district" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[property_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="property_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accommodates]"
+                      dataType="i4"
+                      name="accommodates" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bedrooms]"
+                      dataType="i4"
+                      name="bedrooms" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[amenities]"
+                      dataType="nText"
+                      name="amenities" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      dataType="r8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minimum_nights]"
+                      dataType="i4"
+                      name="minimum_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maximum_nights]"
+                      dataType="i4"
+                      name="maximum_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_rating]"
+                      dataType="i4"
+                      name="review_scores_rating" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_accuracy]"
+                      dataType="i4"
+                      name="review_scores_accuracy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_cleanliness]"
+                      dataType="i4"
+                      name="review_scores_cleanliness" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_checkin]"
+                      dataType="i4"
+                      name="review_scores_checkin" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_communication]"
+                      dataType="i4"
+                      name="review_scores_communication" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_location]"
+                      dataType="i4"
+                      name="review_scores_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_scores_value]"
+                      dataType="i4"
+                      name="review_scores_value" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[instant_bookable]"
+                      dataType="wstr"
+                      length="1"
+                      name="instant_bookable" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Listings\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Listings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Listings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Listings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Listings.Paths[Excel Source Output]"
+              endId="Package\DFT - Load Listings\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\DFT - Load Listings\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Reviews"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5A8B2C46-3CC3-47B2-8AB1-016B03A24342}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Reviews"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Reviews\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Reviews$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Reviews\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[reviews]"
+                  connectionManagerRefId="Package.ConnectionManagers[reviews]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[listing_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[listing_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[listing_id]"
+                      name="listing_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[review_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[review_id]"
+                      name="review_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[date]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[reviewer_id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[reviewer_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[reviewer_id]"
+                      name="reviewer_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[listing_id]"
+                      dataType="r8"
+                      name="listing_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[review_id]"
+                      dataType="r8"
+                      name="review_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[date]"
+                      dataType="date"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].ExternalColumns[reviewer_id]"
+                      dataType="r8"
+                      name="reviewer_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[listing_id]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[listing_id]"
+                      name="listing_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[review_id]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[review_id]"
+                      name="review_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[date]"
+                      dataType="date"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[reviewer_id]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[reviewer_id]"
+                      name="reviewer_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Reviews\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[reviews]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Reviews\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{085FC991-972D-4659-B5FF-B52A606E31AE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AirBnB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[listing_id]"
+                      cachedDataType="r8"
+                      cachedName="listing_id"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[listing_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[listing_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[review_id]"
+                      cachedDataType="r8"
+                      cachedName="review_id"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[review_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="date"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reviewer_id]"
+                      cachedDataType="r8"
+                      cachedName="reviewer_id"
+                      externalMetadataColumnId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_id]"
+                      lineageId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output].Columns[reviewer_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[review_id]"
+                      dataType="i4"
+                      name="review_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[listing_id]"
+                      dataType="i4"
+                      name="listing_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_id]"
+                      dataType="i4"
+                      name="reviewer_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Reviews.Paths[Excel Source Output]"
+              endId="Package\DFT - Load Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\DFT - Load Reviews\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DFT - Load Listings"
+          TopLeft="207,173" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\DFT - Load Reviews"
+          TopLeft="394,175" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Load Listings">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT - Load Listings\OLE DB Destination"
+          TopLeft="305,201" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DFT - Load Listings\Excel Source"
+          TopLeft="316,114" />
+        <EdgeLayout
+          Id="Package\DFT - Load Listings.Paths[Excel Source Output]"
+          TopLeft="388,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load Listings\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load Listings\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Load Reviews">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DFT - Load Reviews\Excel Source"
+          TopLeft="312,181" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT - Load Reviews\OLE DB Destination"
+          TopLeft="381,302" />
+        <EdgeLayout
+          Id="Package\DFT - Load Reviews.Paths[Excel Source Output]"
+          TopLeft="381.5,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85,79"
+              Start="0,0"
+              End="85,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="4,39.5" />
+                  <mssgle:LineSegment
+                    End="81,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81,39.5"
+                    Point2="85,39.5"
+                    Point3="85,43.5" />
+                  <mssgle:LineSegment
+                    End="85,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load Reviews\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load Reviews\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

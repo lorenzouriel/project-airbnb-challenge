@@ -1,0 +1,16 @@
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\bin\Debug\AirBnB.dacpac
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\bin\Debug\AirBnB.dll
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\bin\Debug\AirBnB.pdb
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\AirBnB.sqlproj.AssemblyReference.cache
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\Model.xml
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\refactor.xml
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\postdeploy.sql
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\predeploy.sql
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\AirBnB.dll
+C:\0 - Personal\portfolio\projects\9\Dashboards\Desafio-AirBnB\AirBnB\AirBnB\obj\Debug\AirBnB.pdb
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\bin\Debug\AirBnB.dacpac
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\obj\Debug\AirBnB.sqlproj.AssemblyReference.cache
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\obj\Debug\AirBnB.dll
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\obj\Debug\AirBnB.pdb
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\bin\Debug\AirBnB.dll
+C:\0 - Personal\portfolio\projects\14\AirBnB\AirBnB\bin\Debug\AirBnB.pdb
