@@ -1,0 +1,64 @@
+Desafio Airbnb! 🗼
+
+Este é um desafio de DataViz, proposto pelo Heitor Sasaki e o pessoal da Cubos Academy! #5DataGlowUp #CubosAcademy
+
+Eu separei o Dashboard em três Abas. E em cada aba podemos tirar os seguintes insights:
+
+💢 Aba Geral
+▪ O Total de Propriedades representa o número absoluto de propriedades listadas em nossa plataforma..
+
+▪ O Valor Médio das propriedade é de 608.79 Euros(€) (Em torno de R$3.200)!
+
+▪ Em toda Paris temos um total de Anfitriões de 182.024!
+
+▪ Desde o início, foram feitas mais de 01 milhão de reservas!
+
+▪ Com uma taxa média de aceitação de 85%...
+
+Os Hosts tem um Peso bem maior que os Superhosts em:
+▪ Valor Médio do Aluguel
+
+▪ Reservas
+
+▪ Anfitriões
+
+▪ Anúncios
+
+Os gráficos de barras nos mostram uma espécie de análise de Pareto, quando colorimos do que tem mais impacto para o que tem menos:
+▪ Dentre todas as propriedades com mais reservas a Entire Apartment (Apartamento inteiro) é a opção que recebe o maior número de reservas.
+
+▪ Quando se trata do valor médio de aluguel por propriedade, a Entire House (Casa inteira) é a categoria que ostenta o montante mais elevado.
+
+💢 Aba Top 05
+O foco desta aba, foi distribuir alguns Top 05 pelo Dashboard. Gerando insights de quem tem mais impacto em:
+
+▪ Melhores e Piores Anos
+
+▪ Análise dos Meses/Temporadas
+
+▪ Top 05 locais alugados
+
+▪ Principais Anfitriões e Locatores
+
+💢 Aba Análise
+A aba de Análise é o nosso centro de conhecimento e foco do DataViz, onde desvendamos os diferentes grupos e nichos que fazem parte da nossa Aba Geral. Eu fiz isso pensando em alguém novo que está utilizando o Dashboard e quer uma mão para entender o que está sendo aplicado.
+
+Vamos dar uma olhada em cada um:
+▪ Bookmark 1 - WhatIsCards: Explicação detalhada do Cards e indicadores que você vai encontrar
+
+▪ Bookmark 2 - WhatsIsHosts: Explicação detalhada de cada gráfico de sobreposição que está na Aba Geral
+
+▪ Bookmark 3 - WhatIsBarCharts: Explicação detalhada dos gráficos de barras e análise de pareto aplicada em cada gráfico
+
+Em cada Bookmark e divisão do Selection existem dois botões de navegação. A ideia de cada um é navegar pelos Bookmarks e as páginas do Dashboard.
+
+💡 No final está a arquitetura que foi utilizada, eu fiz uma baita documentação e um tutorial de como fazer exatamente do jeito que eu fiz, amanhã posto esse tutorial. Enquanto isso, tudo está no meu GitHub!
+
+Link do GitHub: https://lnkd.in/dBb86eDb
+
+Link Power BI: https://lnkd.in/dNEik_yE
+
+Link do Portfolio: https://lnkd.in/d5pGvxFN
+
+
+#dataanalysis #analise #airbnb #desafio #challenge #excel #sqlserver #powerbi
