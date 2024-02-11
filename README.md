@@ -25,8 +25,8 @@ Em cada pasta você vai encontrar:
 
 | Ativo  | Razão  |
 |---|---|
-| **AirBnB** | Solução que foi criada e desenvolvida para carregar as soluções: Database Project (AirBnB), Integration Services Projects (ETL) |
-| **Ativos** | Tudo que foi utilizado para criação do Template e Design do Dashboard |
+| [AirBnB](/AirBnB/) | Solução que foi criada e desenvolvida para carregar as soluções: Database Project (AirBnB), Integration Services Projects (ETL) |
+| [Ativos](/Ativos/) | Tudo que foi utilizado para criação do Template e Design do Dashboard |
 | **Dashboard** | Arquivo .pbix do Dashboard |
 | **Fontes** | Todas as Bases de Dados utilizadas para alimentar o Dashboard  |
 | **Tutorial** | Tutorial realizado por mim, documentei todas as etapas que levei para construir esse projeto do 0 em 03 dias |
