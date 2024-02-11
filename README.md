@@ -6,21 +6,21 @@ Esse desafio foi proposto por Heitor Sasaki em conjunto com o pessoal da DataGlo
 ## Instalação e Configuração
 #### 1. Clone o repositório:
 
-```bash
-git clone https://github.com/lorenzouriel/create-free-dw-and-olap-for-sales-analysis.git
-
-cd create-free-dw-and-olap-for-sales-analysis
+```
+bash
+git clone https://github.com/lorenzouriel/project-airbnb-challenge.git
+cd project-airbnb-challenge
 ```
 
 #### 2. Certifique-se de ter instalado:
+- Excel ou Sheets
 - Visual Studio 2019
 - Integration Services
-- Multidimensional Analysis Services
-- SQL Server (SGBD / SSIS / SSAS)
+- SQL Server (SGBD / SSIS)
 - Power BI
 
 
-### Pastas e Soluçoes:
+## Pastas e Soluçoes:
 Em cada pasta você vai encontrar:
 
 | Ativo  | Razão  |
@@ -41,7 +41,7 @@ Em cada pasta você vai encontrar:
 - Figma
 
 ## Arquitetura
-![Arquitetura]()
+![Arquitetura](/Tutorial/Untitled.png)
 
 
 ---
@@ -58,18 +58,20 @@ This challenge was proposed by Heitor Sasaki and the folks at DataGlowUp and Cub
 ## Installation and Configuration
 #### 1. Clone the repository:
 
-```bash
-git clone https://github.com/lorenzouriel/create-free-dw-and-olap-for-sales-analysis.git
-
-cd create-free-dw-and-olap-for-sales-analysis
+```
+bash
+git clone https://github.com/lorenzouriel/project-airbnb-challenge.git
+cd project-airbnb-challenge
 ```
 
 #### 2. Make sure you have installed::
 - Visual Studio 2019
 - Integration Services
 - SQL Server (SGBD / SSIS / SSAS)
-- Power BI 
+- Power BI
 
+  
+## Folders and Solutions:
 In each folder, you will find:
 
 | Asset | Reason |
@@ -85,11 +87,11 @@ In each folder, you will find:
 ## Techs / Tools
 - Excel
 - Visual Studio 2019 (Database Project, SSIS, SSAS)
-- SQL Server (SGBD / SSAS)
+- SQL Server (SGBD / SSIS)
 - Power BI
 - Power BI Service
 - Figma
 
 
 ## Architecture
-![Arquitetura](/Tutorials/Architecture%20v3.png)
+![Arquitetura](/Tutorial/Untitled.png)
