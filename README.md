@@ -76,12 +76,12 @@ In each folder, you will find:
 
 | Asset | Reason |
 | --- | --- |
-| **AirBnB** | Solution created and developed to handle the following solutions: Database Project (AirBnB), Integration Services Projects (ETL) |
-| **Assets** | Everything used to create the Template and Design of the Dashboard |
-| **Dashboard** | .pbix file of the Dashboard |
-| **Sources** | All the Databases used to feed the Dashboard |
-| **Tutorial** | Tutorial conducted by me; I documented all the steps I took to build this project from scratch in 3 days |
-| **README.md** | Project Documentation |
+| [AirBnB](/AirBnB/) | Solution created and developed to handle the following solutions: Database Project (AirBnB), Integration Services Projects (ETL) |
+| [Ativos](/Ativos/) | Everything used to create the Template and Design of the Dashboard |
+| [Dashboard](/Dashboard/) | .pbix file of the Dashboard |
+| [Fontes](/Fontes/) | All the Databases used to feed the Dashboard |
+| [Tutorial](/Tutorial/) | Tutorial conducted by me; I documented all the steps I took to build this project from scratch in 3 days |
+| [README.md](README.md) | Project Documentation |
 
 
 ## Techs / Tools
