@@ -6,9 +6,9 @@ Esse desafio foi proposto por Heitor Sasaki em conjunto com o pessoal da DataGlo
 ## Instalação e Configuração
 #### 1. Clone o repositório:
 
-```
-bash
+```bash
 git clone https://github.com/lorenzouriel/project-airbnb-challenge.git
+
 cd project-airbnb-challenge
 ```
 
@@ -34,7 +34,7 @@ Em cada pasta você vai encontrar:
 
 ## Ferramentas / Tecnologias
 - Excel
-- Visual Studio 2019 (Database Project, SSIS)
+- Visual Studio 2019 (Database Project, Integration Services)
 - SQL Server (SGBD)
 - Power BI
 - Power BI Serviço
@@ -58,9 +58,9 @@ This challenge was proposed by Heitor Sasaki and the folks at DataGlowUp and Cub
 ## Installation and Configuration
 #### 1. Clone the repository:
 
-```
-bash
+```bash
 git clone https://github.com/lorenzouriel/project-airbnb-challenge.git
+
 cd project-airbnb-challenge
 ```
 
@@ -86,7 +86,7 @@ In each folder, you will find:
 
 ## Techs / Tools
 - Excel
-- Visual Studio 2019 (Database Project, SSIS, SSAS)
+- Visual Studio 2019 (Database Project, Integration Services)
 - SQL Server (SGBD / SSIS)
 - Power BI
 - Power BI Service
